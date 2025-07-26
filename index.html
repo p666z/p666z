@@ -12,10 +12,8 @@
    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
    <title>الموقع الشخصي | رضا الموسوي</title>
    <style>
-    /* إضافة هذا النمط لإزالة مؤشر الكتابة */
     .typed-cursor {
       display: none !important;
-      opacity: 0 !important;
     }
    </style>
 </head>
@@ -53,7 +51,7 @@
       </div>
       <div class="stats">
        <span><i class="fa fa-at" style="color: #1E90FF;"></i> @p666z <span class="verified-small">✓</span></span>
-       <span><i class="fa fa-user" style="color: #FF69B4;"></i> 10.1ألف متابع</span>
+       <span><i class="fa fa-users" style="color: #FF69B4;"></i> 10.1ألف متابع</span>
       </div>
      </div>
      <div class="footer">
@@ -107,10 +105,6 @@ body {
     position: relative;
     margin: 20px 0;
     transition: transform 0.3s ease;
-}
-
-.vcard:active {
-    transform: scale(0.98);
 }
 
 .header {
@@ -195,11 +189,6 @@ body {
     border-radius: 100%;
     border: 3px solid white;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
-}
-
-.profile_pic:active {
-    transform: scale(0.95);
 }
 
 .verified-badge {
@@ -257,9 +246,6 @@ body {
     color: #1E90FF;
     transform: scale(1.2);
 }
-.social a:active {
-    transform: scale(0.9);
-}
 .social i {
     padding: 5px;
 }
@@ -290,9 +276,6 @@ body {
 .action-btn:hover {
     box-shadow: 0px 5px 15px rgba(255,105,180,0.4);
     transform: translateY(-3px);
-}
-.action-btn:active {
-    transform: translateY(0) scale(0.95);
 }
 
 .stats {
@@ -342,10 +325,10 @@ body {
     "<i>الموقع الشخصي</i>", 
     "-موقعي الشخصي: ࢪضا- 𝑹𝑬𝑫𝑨<br>يوزري: @p666z<br>المتابعون: 10.1ألف"
   ],
-  typeSpeed: 5,
-  backSpeed: 2,
+  typeSpeed: 8,
+  backSpeed: 20,
   loop: true,
-  showCursor: false // تم تعطيل مؤشر الكتابة هنا أيضًا
+  showCursor: false
 }
 
 var typed = new Typed(".typed_text", options);
@@ -364,32 +347,9 @@ function updateColors() {
 
 setInterval(updateColors, 5000);
 
-// إضافة تأثير اللمس للصفحة بأكملها
-document.addEventListener('touchstart', function() {}, {passive: true});
-document.addEventListener('touchmove', function(e) {
-    e.preventDefault();
-}, {passive: false});
-
-let startY;
-const vcard = document.querySelector('.vcard');
-
-vcard.addEventListener('touchstart', function(e) {
-    startY = e.touches[0].clientY;
-}, {passive: true});
-
-vcard.addEventListener('touchmove', function(e) {
-    const y = e.touches[0].clientY;
-    const diff = y - startY;
-    this.style.transform = `translateY(${diff}px)`;
-}, {passive: true});
-
-vcard.addEventListener('touchend', function() {
-    this.style.transition = 'transform 0.3s ease';
-    this.style.transform = 'translateY(0)';
-    setTimeout(() => {
-        this.style.transition = '';
-    }, 300);
-}, {passive: true});
+// جعل الصفحة قابلة للتمرير
+document.body.style.overflow = 'auto';
+document.body.style.height = 'auto';
   </script>
 </body>
 </html>
