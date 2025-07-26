@@ -1,0 +1,338 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<!DOCTYPE HTML>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   <meta name="theme-color" content="#000000"/>
+   <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+   <meta content="p666z" name="description"/>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+   <title>الموقع الشخصي | رضا الموسوي</title>
+</head>
+<body>
+  <div class="vcard">
+   <div class="header">
+    <div class="wave_bg">
+     <div class="wave-01"></div>
+     <div class="wave-02"></div>
+     <div class="wave-03"></div>
+    </div>
+    <div class="profile_pic_content">
+     <img class="profile_pic" src="https://github.com/p666z/p666z/raw/main/g.png"/>
+     <div class="verified-badge">✓</div>
+    </div>
+   </div>
+   <div class="card_content">
+    <div class="user">
+     <h4>𝑹𝑬𝒁𝑨 𝑨𝑳 𝑴𝒐𝒖𝒔𝒔𝒂𝒘𝒊- ࢪضـا المـوسوي</h4>
+    </div>
+    <div class="name">
+     <h5 class="typed_text"><i>مرحباً بكم في صفحتي الشخصية</i></h5>
+    </div>
+    <div class="social">
+     <a href="https://instagram.com/p666z">
+      <i aria-hidden="true" class="fa fa-instagram"></i>
+     </a>
+    </div>
+    <div class="action-btns">
+     <a class="action-btn main-btn" href="https://instagram.com/p666z">
+      <i class="fa fa-user-plus"></i>
+      تابعني
+     </a>
+     <a class="action-btn sub-btn" href="#">
+      <i class="fa fa-users"></i>
+      الكروب
+     </a>
+    </div>
+    <div class="stats">
+     <span><i class="fa fa-user"></i> @p666z <span class="verified-small">✓</span></span>
+     <span><i class="fa fa-heart"></i> 10.1ألف متابع</span>
+    </div>
+   </div>
+   <div class="footer">
+    الموقع مطور من قبل: @p666z
+   </div>
+  </div>
+  <style>
+   :root {
+    --back_color: #000000;
+    --front_color: #111111;
+    --color1: #FFD700; /* أصفر */
+    --color2: #FF69B4; /* وردي */
+    --color3: #1E90FF; /* أزرق */
+    --color4: #FF4500; /* أحمر */
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--back_color);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vcard {
+    width: 450px;
+    height: 600px;
+    background: var(--front_color);
+    border-radius: 8px;
+    box-shadow: 5px 0px 20px rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.header {
+    height: 40%;
+    position: relative;
+}
+
+.wave_bg {
+    border-radius: 8px;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.wave-01 {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(to top right, var(--color1), var(--color2));
+    border-radius: 50%;
+    top: -200%;
+    left: -20%;
+    animation: rotate 15s linear infinite;
+}
+.wave-02 {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(to top right, var(--color3), var(--color4));
+    border-radius: 40%;
+    top: -205%;
+    left: -22%;
+    opacity: 0.7;
+    animation: rotate 20s linear infinite reverse;
+}
+.wave-03 {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(to top right, var(--color2), var(--color3));
+    border-radius: 45%;
+    top: -198%;
+    left: -18%;
+    opacity: 0.4;
+    animation: rotate 25s linear infinite;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+
+.profile_pic_content {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 80%;
+    text-align: center;
+}
+.profile_pic_content::after {
+    content: '';
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--color1), var(--color4));
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    z-index: -1;
+    opacity: 0;
+    transition: all .7s;
+}
+.profile_pic_content:hover::after {
+    opacity: 0.3;
+}
+
+.profile_pic {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 100%;
+    border: 3px solid white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.verified-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #1E90FF;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.card_content {
+    position: relative;
+    top: 7%;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.user {
+    color: white;
+    font-weight: 700;
+    font-size: 1.4em;
+    margin-top: 20px;
+    text-shadow: 0 0 5px rgba(255,255,255,0.3);
+}
+.name {
+    margin-top: 5px;
+    color: #ccc;
+    padding: 0px 10px;
+}
+
+.typed_text {
+  text-align: center;
+}
+
+.social {
+    color: #FF69B4;
+    padding: 5px;
+    margin-top: 40px;
+}
+.social a {
+    text-decoration: none;
+    color: #FF69B4;
+    font-size: 28px;
+    transition: all 0.3s;
+}
+.social a:hover {
+    color: #1E90FF;
+    transform: scale(1.2);
+}
+.social i {
+    padding: 5px;
+}
+
+.action-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.action-btn {
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    width: 50%;
+    padding: 12px 20px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bolder;
+    transition: all .5s;
+    border: none;
+    font-size: 16px;
+}
+.main-btn {
+    background: linear-gradient(to right, var(--color2), var(--color4));
+}
+.sub-btn {
+    background: linear-gradient(to right, var(--color1), var(--color3));
+}
+.action-btn:hover {
+    box-shadow: 0px 5px 15px rgba(255,105,180,0.4);
+    transform: translateY(-3px);
+}
+
+.stats {
+    margin-top: 25px;
+    color: #aaa;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.stats span {
+    display: inline-block;
+    margin: 0 5px;
+}
+.verified-small {
+    color: #1E90FF;
+    font-weight: bold;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    color: #777;
+    font-size: 12px;
+    border-top: 1px solid #333;
+}
+
+/* Animation for color change */
+@keyframes colorChange {
+    0% { --color1: #FFD700; --color2: #FF69B4; --color3: #1E90FF; --color4: #FF4500; }
+    25% { --color1: #FF69B4; --color2: #1E90FF; --color3: #FF4500; --color4: #FFD700; }
+    50% { --color1: #1E90FF; --color2: #FF4500; --color3: #FFD700; --color4: #FF69B4; }
+    75% { --color1: #FF4500; --color2: #FFD700; --color3: #FF69B4; --color4: #1E90FF; }
+    100% { --color1: #FFD700; --color2: #FF69B4; --color3: #1E90FF; --color4: #FF4500; }
+}
+
+.vcard {
+    animation: colorChange 20s infinite alternate;
+}
+  </style>
+  <script>
+   var options = {
+  strings: [
+    "<i>الموقع الشخصي</i>", 
+    "-موقعي الشخصي: ࢪضا- 𝑹𝑬𝑫𝑨<br>يوزري: @p666z<br>المتابعون: 10.1ألف"
+  ],
+  typeSpeed: 7,
+  backSpeed: 3,
+  loop: true
+}
+
+var typed = new Typed(".typed_text", options);
+
+// Dynamic color change for waves
+function updateColors() {
+    const root = document.documentElement;
+    const colors = ['#FFD700', '#FF69B4', '#1E90FF', '#FF4500'];
+    const shuffledColors = [...colors].sort(() => Math.random() - 0.5);
+    
+    root.style.setProperty('--color1', shuffledColors[0]);
+    root.style.setProperty('--color2', shuffledColors[1]);
+    root.style.setProperty('--color3', shuffledColors[2]);
+    root.style.setProperty('--color4', shuffledColors[3]);
+}
+
+setInterval(updateColors, 5000);
+  </script>
+</body>
+</html>
