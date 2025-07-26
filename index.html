@@ -12,7 +12,6 @@
    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
    <title>الموقع الشخصي | رضا الموسوي</title>
    <style>
-    /* تنسيق المؤشر (الكرسور) */
     .typed-cursor {
       color: #FF69B4;
       font-size: 1.5em;
@@ -72,10 +71,9 @@
    :root {
     --back_color: #000000;
     --front_color: #111111;
-    --color1: #FFD700; /* أصفر */
-    --color2: #FF69B4; /* وردي */
-    --color3: #1E90FF; /* أزرق */
-    --color4: #FF4500; /* أحمر */
+    --purple: #FF0000; 
+    --pink: #EB7AC8;
+    --blue: #2DB8E7;
 }
 
 * {
@@ -121,49 +119,47 @@ body {
 }
 
 .wave_bg {
-    border-radius: 8px 8px 0 0;
+    border-radius: 8px;
     position: relative;
     height: 100%;
     overflow: hidden;
 }
 
-.wave-01 {
-    position: absolute;
-    width: 650px;
-    height: 650px;
-    background: linear-gradient(135deg, var(--color1), var(--color2));
-    border-radius: 45% 47% 43% 46%;
-    top: -180%;
-    left: -25%;
-    animation: rotate 18s linear infinite;
-    opacity: 0.8;
-}
-.wave-02 {
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    background: linear-gradient(135deg, var(--color3), var(--color4));
-    border-radius: 46% 44% 45% 47%;
-    top: -190%;
-    left: -20%;
-    opacity: 0.6;
-    animation: rotate 22s linear infinite reverse;
-}
-.wave-03 {
+.wave-01, .wave-02, .wave-03 {
     position: absolute;
     width: 600px;
     height: 600px;
-    background: linear-gradient(135deg, var(--color2), var(--color3));
-    border-radius: 47% 45% 46% 44%;
-    top: -170%;
-    left: -15%;
-    opacity: 0.4;
-    animation: rotate 25s linear infinite;
+    background: linear-gradient(to top right, var(--purple), var(--pink));
+    animation: rotate linear infinite;
+}
+
+.wave-01 {
+    top: -200%;
+    left: -20%;
+    border-radius: 50%;
+    animation-duration: 10s;
+}
+
+.wave-02 {
+    top: -205%;
+    left: -22%;
+    border-radius: 40%;
+    opacity: 0.5;
+    animation-duration: 15s;
+}
+
+.wave-03 {
+    top: -198%;
+    left: -18%;
+    border-radius: 45%;
+    opacity: 0.2;
+    animation-duration: 15s;
 }
 
 @keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .profile_pic_content {
@@ -181,7 +177,7 @@ body {
     border-radius: 50%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, var(--color1), var(--color4));
+    background: linear-gradient(to right, var(--purple), var(--pink));
     position: absolute;
     top: 0;
     left: 0;
@@ -199,11 +195,6 @@ body {
     border-radius: 100%;
     border: 3px solid white;
     box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease;
-}
-
-.profile_pic:active {
-    transform: scale(0.98);
 }
 
 .verified-badge {
@@ -287,7 +278,7 @@ body {
     font-size: 16px;
 }
 .main-btn {
-    background: linear-gradient(to right, var(--color2), var(--color4));
+    background: linear-gradient(to right, var(--pink), var(--purple));
     box-shadow: 0 4px 15px rgba(255,105,180,0.3);
 }
 .action-btn:hover {
@@ -323,19 +314,6 @@ body {
     border-top: 1px solid #333;
 }
 
-/* Animation for color change */
-@keyframes colorChange {
-    0% { --color1: #FFD700; --color2: #FF69B4; --color3: #1E90FF; --color4: #FF4500; }
-    25% { --color1: #FF69B4; --color2: #1E90FF; --color3: #FF4500; --color4: #FFD700; }
-    50% { --color1: #1E90FF; --color2: #FF4500; --color3: #FFD700; --color4: #FF69B4; }
-    75% { --color1: #FF4500; --color2: #FFD700; --color3: #FF69B4; --color4: #1E90FF; }
-    100% { --color1: #FFD700; --color2: #FF69B4; --color3: #1E90FF; --color4: #FF4500; }
-}
-
-.vcard {
-    animation: colorChange 20s infinite alternate;
-}
-
 /* تأثير التمرير الناعم */
 html {
     scroll-behavior: smooth;
@@ -347,27 +325,13 @@ html {
     "<i>الموقع الشخصي</i>", 
     "-موقعي الشخصي: ࢪضا- 𝑹𝑬𝑫𝑨<br>يوزري: @p666z<br>المتابعون: 10.1ألف"
   ],
-  typeSpeed: 7,
-  backSpeed: 3,
+  typeSpeed: 8,
+  backSpeed: 20,
   loop: true,
   showCursor: true
 }
 
 var typed = new Typed(".typed_text", options);
-
-// Dynamic color change for waves
-function updateColors() {
-    const root = document.documentElement;
-    const colors = ['#FFD700', '#FF69B4', '#1E90FF', '#FF4500'];
-    const shuffledColors = [...colors].sort(() => Math.random() - 0.5);
-    
-    root.style.setProperty('--color1', shuffledColors[0]);
-    root.style.setProperty('--color2', shuffledColors[1]);
-    root.style.setProperty('--color3', shuffledColors[2]);
-    root.style.setProperty('--color4', shuffledColors[3]);
-}
-
-setInterval(updateColors, 5000);
 
 // جعل الصفحة قابلة للتمرير
 document.body.style.overflow = 'auto';
