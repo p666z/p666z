@@ -41,10 +41,10 @@
      </div>
      <div class="card_content">
       <div class="user">
-       <h4>𝑹𝑬𝒁𝑨 𝑨𝑳 𝑴𝒐𝒖𝒔𝒔𝒂𝒘𝒊- ࢪضـا المـوسوي</h4>
+       <h4 class="gradient-text">𝑹𝑬𝒁𝑨 𝑨𝑳 𝑴𝒐𝒖𝒔𝒔𝒂𝒘𝒊- ࢪضـا المـوسوي</h4>
       </div>
       <div class="name">
-       <h5 class="typed_text"><i>مرحباً بكم في صفحتي الشخصية</i></h5>
+       <h5 class="typed_text gradient-text"><i>مرحباً بكم في صفحتي الشخصية</i></h5>
       </div>
       <div class="social">
        <a href="https://instagram.com/p666z">
@@ -77,6 +77,11 @@
     --color4: #FF4500; /* أحمر */
 }
 
+.gradient-text {
+  background: linear-gradient(to right, var(--color1), var(--color2), var(--color4));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 * {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -328,23 +333,26 @@ html {
     scroll-behavior: smooth;
 }
   </style>
-  <script>
-   var options = {
-  strings: [
-    "<i>الموقع الشخصي</i>", 
-    "-موقعي الشخصي: ࢪضا- 𝑹𝑬𝑫𝑨<br>يوزري: @p666z<br>المتابعون: 10.1ألف"
-  ],
-  typeSpeed: 7,
-  backSpeed: 3,
-  loop: true,
-  showCursor: true
-}
+<script>
+  var options = {
+    strings: [
+      "<i>الموقع الشخصي</i>", 
+      "-موقعي الشخصي: ࢪضا- 𝑹𝑬𝑫𝑨<br>يوزري: @p666z<br>المتابعون: 10.1ألف"
+    ],
+    typeSpeed: 9,
+    backSpeed: 20,
+    loop: true,
+    showCursor: true
+  }
 
-var typed = new Typed(".typed_text", options);
+  var typed = new Typed(".typed_text", options);
 
-// جعل الصفحة قابلة للتمرير
-document.body.style.overflow = 'auto';
-document.body.style.height = 'auto';
-  </script>
+  // ✅ نضيف كلاس التدرج هنا
+  typed.el.classList.add("gradient-text");
+
+  // جعل الصفحة قابلة للتمرير
+  document.body.style.overflow = 'auto';
+  document.body.style.height = 'auto';
+</script>
 </body>
 </html>
