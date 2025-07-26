@@ -11,46 +11,55 @@
    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
    <title>الموقع الشخصي | رضا الموسوي</title>
+   <style>
+    /* إضافة هذا النمط لإزالة مؤشر الكتابة */
+    .typed-cursor {
+      display: none !important;
+      opacity: 0 !important;
+    }
+   </style>
 </head>
 <body>
-  <div class="vcard">
-   <div class="header">
-    <div class="wave_bg">
-     <div class="wave-01"></div>
-     <div class="wave-02"></div>
-     <div class="wave-03"></div>
+  <div class="container">
+    <div class="vcard">
+     <div class="header">
+      <div class="wave_bg">
+       <div class="wave-01"></div>
+       <div class="wave-02"></div>
+       <div class="wave-03"></div>
+      </div>
+      <div class="profile_pic_content">
+       <img class="profile_pic" src="https://github.com/p666z/p666z/raw/main/g.png"/>
+       <div class="verified-badge">✓</div>
+      </div>
+     </div>
+     <div class="card_content">
+      <div class="user">
+       <h4>𝑹𝑬𝒁𝑨 𝑨𝑳 𝑴𝒐𝒖𝒔𝒔𝒂𝒘𝒊- ࢪضـا المـوسوي</h4>
+      </div>
+      <div class="name">
+       <h5 class="typed_text"><i>مرحباً بكم في صفحتي الشخصية</i></h5>
+      </div>
+      <div class="social">
+       <a href="https://instagram.com/p666z">
+        <i aria-hidden="true" class="fa fa-instagram"></i>
+       </a>
+      </div>
+      <div class="action-btns">
+       <a class="action-btn main-btn" href="https://instagram.com/p666z">
+        <i class="fa fa-user-plus"></i>
+        تابعني
+       </a>
+      </div>
+      <div class="stats">
+       <span><i class="fa fa-at" style="color: #1E90FF;"></i> @p666z <span class="verified-small">✓</span></span>
+       <span><i class="fa fa-user" style="color: #FF69B4;"></i> 10.1ألف متابع</span>
+      </div>
+     </div>
+     <div class="footer">
+      الموقع مطور من قبل: @p666z
+     </div>
     </div>
-    <div class="profile_pic_content">
-     <img class="profile_pic" src="https://github.com/p666z/p666z/raw/main/g.png"/>
-     <div class="verified-badge">✓</div>
-    </div>
-   </div>
-   <div class="card_content">
-    <div class="user">
-     <h4>𝑹𝑬𝒁𝑨 𝑨𝑳 𝑴𝒐𝒖𝒔𝒔𝒂𝒘𝒊- ࢪضـا المـوسوي</h4>
-    </div>
-    <div class="name">
-     <h5 class="typed_text"><i>مرحباً بكم في صفحتي الشخصية</i></h5>
-    </div>
-    <div class="social">
-     <a href="https://instagram.com/p666z">
-      <i aria-hidden="true" class="fa fa-instagram"></i>
-     </a>
-    </div>
-    <div class="action-btns">
-     <a class="action-btn main-btn" href="https://instagram.com/p666z">
-      <i class="fa fa-user-plus"></i>
-      تابعني
-     </a>
-    </div>
-    <div class="stats">
-     <span><i class="fa fa-user"></i> @p666z <span class="verified-small">✓</span></span>
-     <span><i class="fa fa-heart"></i> 10.1ألف متابع</span>
-    </div>
-   </div>
-   <div class="footer">
-    الموقع مطور من قبل: @p666z
-   </div>
   </div>
   <style>
    :root {
@@ -73,7 +82,17 @@ body {
     background: var(--back_color);
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,11 +100,17 @@ body {
 
 .vcard {
     width: 450px;
-    height: 600px;
+    min-height: 600px;
     background: var(--front_color);
     border-radius: 8px;
     box-shadow: 5px 0px 20px rgba(255, 255, 255, 0.1);
     position: relative;
+    margin: 20px 0;
+    transition: transform 0.3s ease;
+}
+
+.vcard:active {
+    transform: scale(0.98);
 }
 
 .header {
@@ -94,7 +119,7 @@ body {
 }
 
 .wave_bg {
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0;
     position: relative;
     height: 100%;
     overflow: hidden;
@@ -170,6 +195,11 @@ body {
     border-radius: 100%;
     border: 3px solid white;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.profile_pic:active {
+    transform: scale(0.95);
 }
 
 .verified-badge {
@@ -227,6 +257,9 @@ body {
     color: #1E90FF;
     transform: scale(1.2);
 }
+.social a:active {
+    transform: scale(0.9);
+}
 .social i {
     padding: 5px;
 }
@@ -257,6 +290,9 @@ body {
 .action-btn:hover {
     box-shadow: 0px 5px 15px rgba(255,105,180,0.4);
     transform: translateY(-3px);
+}
+.action-btn:active {
+    transform: translateY(0) scale(0.95);
 }
 
 .stats {
@@ -306,9 +342,10 @@ body {
     "<i>الموقع الشخصي</i>", 
     "-موقعي الشخصي: ࢪضا- 𝑹𝑬𝑫𝑨<br>يوزري: @p666z<br>المتابعون: 10.1ألف"
   ],
-  typeSpeed: 7,
-  backSpeed: 3,
-  loop: true
+  typeSpeed: 5,
+  backSpeed: 2,
+  loop: true,
+  showCursor: false // تم تعطيل مؤشر الكتابة هنا أيضًا
 }
 
 var typed = new Typed(".typed_text", options);
@@ -326,6 +363,33 @@ function updateColors() {
 }
 
 setInterval(updateColors, 5000);
+
+// إضافة تأثير اللمس للصفحة بأكملها
+document.addEventListener('touchstart', function() {}, {passive: true});
+document.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+}, {passive: false});
+
+let startY;
+const vcard = document.querySelector('.vcard');
+
+vcard.addEventListener('touchstart', function(e) {
+    startY = e.touches[0].clientY;
+}, {passive: true});
+
+vcard.addEventListener('touchmove', function(e) {
+    const y = e.touches[0].clientY;
+    const diff = y - startY;
+    this.style.transform = `translateY(${diff}px)`;
+}, {passive: true});
+
+vcard.addEventListener('touchend', function() {
+    this.style.transition = 'transform 0.3s ease';
+    this.style.transform = 'translateY(0)';
+    setTimeout(() => {
+        this.style.transition = '';
+    }, 300);
+}, {passive: true});
   </script>
 </body>
 </html>
