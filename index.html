@@ -12,6 +12,7 @@
    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
    <title>الموقع الشخصي | رضا الموسوي</title>
    <style>
+    /* تنسيق المؤشر (الكرسور) */
     .typed-cursor {
       color: #FF69B4;
       font-size: 1.5em;
@@ -23,73 +24,11 @@
       50% { opacity: 0; }
       100% { opacity: 1; }
     }
-    
-    /* أنصاف الدوائر الجديدة */
-    .half-circles {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
-    .half-circle {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.3;
-      animation: float 15s infinite linear;
-    }
-    .half-circle:nth-child(1) {
-      width: 300px;
-      height: 300px;
-      background: var(--color1);
-      top: -150px;
-      left: -150px;
-      animation-delay: 0s;
-    }
-    .half-circle:nth-child(2) {
-      width: 200px;
-      height: 200px;
-      background: var(--color2);
-      bottom: -100px;
-      right: -100px;
-      animation-delay: 2s;
-    }
-    .half-circle:nth-child(3) {
-      width: 250px;
-      height: 250px;
-      background: var(--color3);
-      top: -125px;
-      right: -125px;
-      animation-delay: 4s;
-    }
-    .half-circle:nth-child(4) {
-      width: 180px;
-      height: 180px;
-      background: var(--color4);
-      bottom: -90px;
-      left: -90px;
-      animation-delay: 6s;
-    }
-    @keyframes float {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(50px, 50px) rotate(90deg); }
-      50% { transform: translate(100px, 0) rotate(180deg); }
-      75% { transform: translate(50px, -50px) rotate(270deg); }
-      100% { transform: translate(0, 0) rotate(360deg); }
-    }
    </style>
 </head>
 <body>
   <div class="container">
     <div class="vcard">
-     <div class="half-circles">
-      <div class="half-circle"></div>
-      <div class="half-circle"></div>
-      <div class="half-circle"></div>
-      <div class="half-circle"></div>
-     </div>
      <div class="header">
       <div class="wave_bg">
        <div class="wave-01"></div>
@@ -174,13 +113,11 @@ body {
     box-shadow: 5px 0px 20px rgba(255, 255, 255, 0.1);
     position: relative;
     margin: 20px 0;
-    overflow: hidden;
 }
 
 .header {
     height: 40%;
     position: relative;
-    z-index: 1;
 }
 
 .wave_bg {
@@ -238,7 +175,6 @@ body {
     transform: translate(-50%, -50%);
     top: 80%;
     text-align: center;
-    z-index: 2;
 }
 .profile_pic_content::after {
     content: '';
@@ -291,7 +227,6 @@ body {
     top: 7%;
     text-align: center;
     padding-bottom: 40px;
-    z-index: 1;
 }
 
 .user {
@@ -386,7 +321,6 @@ body {
     color: #777;
     font-size: 12px;
     border-top: 1px solid #333;
-    z-index: 1;
 }
 
 /* Animation for color change */
@@ -413,8 +347,8 @@ html {
     "<i>الموقع الشخصي</i>", 
     "-موقعي الشخصي: ࢪضا- 𝑹𝑬𝑫𝑨<br>يوزري: @p666z<br>المتابعون: 10.1ألف"
   ],
-  typeSpeed: 8,
-  backSpeed: 20,
+  typeSpeed: 7,
+  backSpeed: 3,
   loop: true,
   showCursor: true
 }
