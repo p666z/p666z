@@ -104,9 +104,10 @@ body {
     align-items: center;
 }
 
+/* التعديلات المطلوبة */
 .vcard {
     width: 450px;
-    min-height: 600px;
+    height: 600px; /* تغيير مهم */
     background: var(--front_color);
     border-radius: 8px;
     box-shadow: 5px 0px 20px rgba(255, 255, 255, 0.1);
@@ -115,15 +116,19 @@ body {
 }
 
 .header {
-    height: 40%;
+    height: 240px; /* التغيير المطلوب */
     position: relative;
+    overflow: hidden; /* التغيير المطلوب */
 }
 
 .wave_bg {
-    border-radius: 8px;
-    position: relative;
-    height: 100%;
-    overflow: hidden;
+    position: absolute; /* التغيير المطلوب */
+    top: 0; /* التغيير المطلوب */
+    left: 0; /* التغيير المطلوب */
+    width: 100%; /* التغيير المطلوب */
+    height: 100%; /* التغيير المطلوب */
+    overflow: hidden; /* التغيير المطلوب */
+    z-index: 0; /* التغيير المطلوب */
 }
 
 .wave-01 {
@@ -174,6 +179,7 @@ body {
     transform: translate(-50%, -50%);
     top: 80%;
     text-align: center;
+    z-index: 1; /* التغيير المطلوب */
 }
 .profile_pic_content::after {
     content: '';
@@ -328,8 +334,8 @@ html {
     "<i>الموقع الشخصي</i>", 
     "-موقعي الشخصي: ࢪضا- 𝑹𝑬𝑫𝑨<br>يوزري: @p666z<br>المتابعون: 10.1ألف"
   ],
-  typeSpeed: 9,
-  backSpeed: 20,
+  typeSpeed: 7,
+  backSpeed: 3,
   loop: true,
   showCursor: true
 }
