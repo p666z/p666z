@@ -12,8 +12,17 @@
    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
    <title>الموقع الشخصي | رضا الموسوي</title>
    <style>
+    /* تنسيق المؤشر (الكرسور) */
     .typed-cursor {
-      display: none !important;
+      color: #FF69B4;
+      font-size: 1.5em;
+      opacity: 1;
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
     }
    </style>
 </head>
@@ -104,7 +113,6 @@ body {
     box-shadow: 5px 0px 20px rgba(255, 255, 255, 0.1);
     position: relative;
     margin: 20px 0;
-    transition: transform 0.3s ease;
 }
 
 .header {
@@ -121,38 +129,40 @@ body {
 
 .wave-01 {
     position: absolute;
-    width: 600px;
-    height: 600px;
-    background: linear-gradient(to top right, var(--color1), var(--color2));
-    border-radius: 50%;
-    top: -200%;
-    left: -20%;
-    animation: rotate 15s linear infinite;
+    width: 650px;
+    height: 650px;
+    background: linear-gradient(135deg, var(--color1), var(--color2));
+    border-radius: 45% 47% 43% 46%;
+    top: -180%;
+    left: -25%;
+    animation: rotate 18s linear infinite;
+    opacity: 0.8;
 }
 .wave-02 {
     position: absolute;
-    width: 600px;
-    height: 600px;
-    background: linear-gradient(to top right, var(--color3), var(--color4));
-    border-radius: 40%;
-    top: -205%;
-    left: -22%;
-    opacity: 0.7;
-    animation: rotate 20s linear infinite reverse;
+    width: 700px;
+    height: 700px;
+    background: linear-gradient(135deg, var(--color3), var(--color4));
+    border-radius: 46% 44% 45% 47%;
+    top: -190%;
+    left: -20%;
+    opacity: 0.6;
+    animation: rotate 22s linear infinite reverse;
 }
 .wave-03 {
     position: absolute;
     width: 600px;
     height: 600px;
-    background: linear-gradient(to top right, var(--color2), var(--color3));
-    border-radius: 45%;
-    top: -198%;
-    left: -18%;
+    background: linear-gradient(135deg, var(--color2), var(--color3));
+    border-radius: 47% 45% 46% 44%;
+    top: -170%;
+    left: -15%;
     opacity: 0.4;
     animation: rotate 25s linear infinite;
 }
 
 @keyframes rotate {
+    0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
@@ -173,8 +183,8 @@ body {
     height: 100%;
     background: linear-gradient(to right, var(--color1), var(--color4));
     position: absolute;
-    top: 1px;
-    left: 2px;
+    top: 0;
+    left: 0;
     z-index: -1;
     opacity: 0;
     transition: all .7s;
@@ -188,7 +198,12 @@ body {
     max-height: 100%;
     border-radius: 100%;
     border: 3px solid white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.profile_pic:active {
+    transform: scale(0.98);
 }
 
 .verified-badge {
@@ -218,13 +233,14 @@ body {
     color: white;
     font-weight: 700;
     font-size: 1.4em;
-    margin-top: 20px;
-    text-shadow: 0 0 5px rgba(255,255,255,0.3);
+    margin-top: 70px;
+    text-shadow: 0 0 8px rgba(255,255,255,0.4);
 }
 .name {
-    margin-top: 5px;
+    margin-top: 15px;
     color: #ccc;
-    padding: 0px 10px;
+    padding: 0px 20px;
+    min-height: 80px;
 }
 
 .typed_text {
@@ -234,7 +250,7 @@ body {
 .social {
     color: #FF69B4;
     padding: 5px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .social a {
     text-decoration: none;
@@ -255,7 +271,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 .action-btn {
     cursor: pointer;
@@ -272,14 +288,15 @@ body {
 }
 .main-btn {
     background: linear-gradient(to right, var(--color2), var(--color4));
+    box-shadow: 0 4px 15px rgba(255,105,180,0.3);
 }
 .action-btn:hover {
-    box-shadow: 0px 5px 15px rgba(255,105,180,0.4);
+    box-shadow: 0px 7px 20px rgba(255,105,180,0.5);
     transform: translateY(-3px);
 }
 
 .stats {
-    margin-top: 25px;
+    margin-top: 30px;
     color: #aaa;
     font-size: 14px;
     display: flex;
@@ -318,6 +335,11 @@ body {
 .vcard {
     animation: colorChange 20s infinite alternate;
 }
+
+/* تأثير التمرير الناعم */
+html {
+    scroll-behavior: smooth;
+}
   </style>
   <script>
    var options = {
@@ -328,7 +350,7 @@ body {
   typeSpeed: 8,
   backSpeed: 20,
   loop: true,
-  showCursor: false
+  showCursor: true
 }
 
 var typed = new Typed(".typed_text", options);
