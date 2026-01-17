@@ -1,358 +1,302 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/>
 <!DOCTYPE HTML>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-   <meta name="theme-color" content="#000000"/>
-   <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
-   <meta content="p666z" name="description"/>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
-   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
-   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-   <title>الموقع الشخصي | رضا الموسوي</title>
-   <style>
-    .typed-cursor {
-      color: #FF69B4;
-      font-size: 1.5em;
-      opacity: 1;
-      animation: blink 0.7s infinite;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#000000"/>
+  <meta name="description" content="Reza Al Moussawi - Personal Neural Interface 2077">
+  <title>موقعي الشخصي | V.2077</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+  <style>
+    /* =========================================
+       CORE SYSTEM VARIABLES
+    ========================================= */
+    :root {
+      --neon-cyan: #00f3ff;
+      --neon-purple: #9d00ff;
+      --neon-pink: #ff0055;
+      --cyber-black: #050508;
+      --cyber-dark: #0a0a12;
+      --text-primary: #e0e0e0;
+      --text-muted: #8a8a9b;
+      --glass-bg: rgba(10, 10, 18, 0.6);
+      --glass-border: rgba(0, 243, 255, 0.2);
+      --glass-blur: blur(30px);
+      --font-tech: 'Rajdhani', sans-serif;
+      --font-main: 'Cairo', sans-serif;
+      --transition-speed: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 1; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    /* تحديث هيكلية الجسم للاستجابة الشاملة */
+    html, body {
+      min-height: 100vh; /* استخدام min-height بدلاً من height ثابت */
+      width: 100%;
+      background-color: var(--cyber-black);
+      font-family: var(--font-main);
+      color: var(--text-primary);
+      overflow-x: hidden; /* منع التمرير الأفقي فقط */
+      /* السماح بالتمرير العمودي إذا كان المحتوى طويلاً على شاشة صغيرة */
+      overflow-y: auto; 
+      display: flex;
+      justify-content: center;
+      align-items: center; /* سيحاول التوسط، لكن سيسمح بالتمرير إذا لزم الأمر */
+      perspective: 1500px;
+      padding: 20px 0; /* إضافة مساحة للتنفس على الهواتف */
     }
-   </style>
+
+    /* PRELOADER */
+    #preloader {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--cyber-black); z-index: 9999;
+      display: flex; justify-content: center; align-items: center; flex-direction: column;
+    }
+    .loader-scan {
+      width: 200px; height: 200px; border: 3px solid transparent;
+      border-top-color: var(--neon-cyan); border-radius: 50%;
+      animation: spin-load 1.5s linear infinite; position: relative;
+    }
+    .loader-scan::before {
+      content:''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
+      border: 3px solid transparent; border-top-color: var(--neon-purple);
+      border-radius: 50%; animation: spin-load 2s linear infinite reverse;
+    }
+    .loading-text { margin-top: 20px; font-family: var(--font-tech); letter-spacing: 3px; color: var(--neon-cyan); animation: blink 1s infinite; }
+
+    /* BACKGROUND */
+    .cyber-environment { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+    .cyber-grid {
+      position: absolute; bottom: -30%; left: -50%; width: 200%; height: 100%;
+      background: linear-gradient(transparent 0%, var(--cyber-black) 100%),
+        repeating-linear-gradient(0deg, transparent 0, transparent 40px, rgba(0, 243, 255, 0.1) 40px, rgba(0, 243, 255, 0.1) 41px),
+        repeating-linear-gradient(90deg, transparent 0, transparent 40px, rgba(157, 0, 255, 0.1) 40px, rgba(157, 0, 255, 0.1) 41px);
+      transform: rotateX(60deg); animation: grid-move 20s linear infinite;
+    }
+    .light-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.4; animation: float-orb 15s ease-in-out infinite alternate; }
+    .orb-1 { top: 10%; left: 20%; width: 400px; height: 400px; background: var(--neon-purple); }
+    .orb-2 { bottom: 10%; right: 20%; width: 300px; height: 300px; background: var(--neon-cyan); animation-delay: -5s; }
+
+    /* HUD - جعلناه ثابتاً ليبقى على الشاشة */
+    .hud-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; padding: 20px; }
+    .hud-corner { position: absolute; width: 50px; height: 50px; border-color: var(--neon-cyan); border-style: solid; opacity: 0.7; transition: 0.3s;}
+    .top-left { top: 30px; left: 30px; border-width: 3px 0 0 3px; }
+    .top-right { top: 30px; right: 30px; border-width: 3px 3px 0 0; }
+    .bottom-left { bottom: 30px; left: 30px; border-width: 0 0 3px 3px; }
+    .bottom-right { bottom: 30px; right: 30px; border-width: 0 3px 3px 0; }
+    .scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: rgba(0, 243, 255, 0.3); box-shadow: 0 0 10px var(--neon-cyan); animation: scan-down 5s linear infinite; }
+
+    /* CARD - تحديثات الاستجابة الرئيسية */
+    .interface-container {
+      width: 100%; display: flex; justify-content: center;
+      padding: 20px; z-index: 100;
+    }
+    .cyber-card {
+      position: relative;
+      width: 90%; /* عرض مرن للهواتف */
+      max-width: 450px; /* حد أقصى للكمبيوترات */
+      min-height: auto; /* الارتفاع حسب المحتوى */
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);
+      border-radius: 20px; padding: 40px 30px; text-align: center;
+      box-shadow: 0 0 30px rgba(0, 243, 255, 0.1), inset 0 0 20px rgba(0, 0, 0, 0.5);
+      overflow: hidden; transform-style: preserve-3d;
+      margin: auto; /* ضمان التوسط */
+    }
+    .cyber-card::after {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: conic-gradient(transparent, rgba(0, 243, 255, 0.1), transparent 30%);
+      animation: rotate-glow 10s linear infinite; pointer-events: none;
+    }
+
+    /* PROFILE */
+    .profile-energy-ring { position: relative; width: 170px; height: 170px; margin: 0 auto 25px; display: flex; justify-content: center; align-items: center; transition: 0.3s; }
+    .energy-spinner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; border: 3px solid transparent; border-top-color: var(--neon-cyan); border-right-color: var(--neon-purple); animation: spin-load 3s linear infinite; }
+    .img-clipper { width: 150px; height: 150px; border-radius: 50%; overflow: hidden; border: 3px solid var(--cyber-black); position: relative; z-index: 2; transition: 0.3s; }
+    .profile-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .user-identity h1 { font-family: var(--font-tech); font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; background: linear-gradient(to right, #fff, var(--neon-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; transition: 0.3s; }
+    .glitch-effect { position: relative; animation: glitch-anim 3s infinite; }
+    .typed-console { min-height: 60px; color: var(--neon-cyan); font-family: var(--font-tech); font-size: 1rem; display: flex; justify-content: center; align-items: center; text-align: center; }
+
+    /* DATA */
+    .data-readout { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 35px 0; }
+    .data-module { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); padding: 15px; border-radius: 12px; position: relative; transition: var(--transition-speed); overflow: hidden; }
+    .data-module::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--neon-cyan); }
+    .module-label { font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 5px; }
+    .module-value { font-family: var(--font-tech); font-size: 1.4rem; font-weight: bold; transition: 0.3s; }
+    .verified-icon { color: var(--neon-cyan); margin-right: 5px; animation: pulse 2s infinite; }
+
+    /* BUTTONS */
+    .main-action-btn {
+      position: relative; width: 100%; padding: 18px; background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+      border: none; border-radius: 8px; color: white; font-family: var(--font-tech); font-size: 1.2rem; font-weight: bold;
+      text-transform: uppercase; letter-spacing: 2px; cursor: pointer; overflow: hidden; transition: all 0.5s ease;
+      display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none;
+    }
+    .main-action-btn:hover { box-shadow: 0 0 30px var(--neon-cyan); letter-spacing: 4px; }
+
+    .social-matrix { margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+    .matrix-link {
+      width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;
+      border: 1px solid var(--glass-border); border-radius: 50%; color: var(--text-muted);
+      font-size: 1.3rem; transition: var(--transition-speed); background: rgba(255,255,255,0.02);
+      text-decoration: none;
+    }
+    .matrix-link:hover { color: var(--neon-cyan); border-color: var(--neon-cyan); box-shadow: 0 0 15px var(--neon-cyan); transform: scale(1.1) rotate(360deg); }
+
+    .system-footer { margin-top: 40px; padding-top: 20px; border-top: 1px dashed rgba(255,255,255,0.1); font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-tech); letter-spacing: 1px; }
+    .sys-id { color: var(--neon-pink); }
+
+    /* ANIMATIONS */
+    @keyframes spin-load { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    @keyframes grid-move { 0% { background-position: 0 0; } 100% { background-position: 0 1000px; } }
+    @keyframes float-orb { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
+    @keyframes scan-down { 0% { top: -10%; opacity: 0; } 50% { opacity: 1; } 100% { top: 110%; opacity: 0; } }
+    @keyframes rotate-glow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
+    @keyframes glitch-anim { 0% { text-shadow: 2px 0 0 var(--neon-pink), -2px 0 0 var(--neon-cyan); } 2% { text-shadow: 2px 0 0 var(--neon-pink), -2px 0 0 var(--neon-cyan); left: -2px;} 4% { text-shadow: 2px 0 0 var(--neon-pink), -2px 0 0 var(--neon-cyan); left: 2px;} 5% { text-shadow: none; left: 0;} 100% { text-shadow: none; } }
+
+    /* =========================================
+       RESPONSIVE MEDIA QUERIES - استعلامات الوسائط المتجاوبة
+    ========================================= */
+    
+    /* للهواتف المتوسطة والصغيرة (أقل من 480 بكسل) */
+    @media (max-width: 480px) {
+      .cyber-card { padding: 30px 20px; }
+      .profile-energy-ring { width: 140px; height: 140px; }
+      .img-clipper { width: 120px; height: 120px; }
+      .user-identity h1 { font-size: 1.8rem; }
+      .module-value { font-size: 1.2rem; }
+      .hud-container { padding: 10px; }
+      .hud-corner { width: 30px; height: 30px; border-width: 2px; }
+    }
+
+    /* للهواتف الصغيرة جداً (مثل iPhone SE القديم) */
+    @media (max-width: 360px) {
+       .user-identity h1 { font-size: 1.6rem; letter-spacing: 1px; }
+       .main-action-btn { padding: 14px; font-size: 1rem; }
+       .social-matrix { gap: 10px; }
+       .matrix-link { width: 42px; height: 42px; font-size: 1.1rem; }
+    }
+
+    /* للشاشات القصيرة (تجنب قص المحتوى من الأعلى) */
+    @media (max-height: 700px) {
+        body { align-items: flex-start; padding-top: 30px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <div class="vcard">
-     <div class="header">
-      <div class="wave_bg">
-       <div class="wave-01"></div>
-       <div class="wave-02"></div>
-       <div class="wave-03"></div>
+
+  <div id="preloader">
+    <div class="loader-scan"></div>
+    <div class="loading-text">INITIALIZING SYSTEM V.2077...</div>
+  </div>
+
+  <div class="cyber-environment">
+    <div class="cyber-grid"></div>
+    <div class="light-orb orb-1"></div>
+    <div class="light-orb orb-2"></div>
+  </div>
+
+  <div class="hud-container">
+    <div class="hud-corner top-left"></div><div class="hud-corner top-right"></div>
+    <div class="hud-corner bottom-left"></div><div class="hud-corner bottom-right"></div>
+    <div class="scan-line"></div>
+  </div>
+
+  <div class="interface-container">
+    <div class="cyber-card" data-tilt data-tilt-max="8" data-tilt-speed="1000" data-tilt-gyroscope="true">
+      
+      <div class="profile-section">
+        <div class="profile-energy-ring">
+          <div class="energy-spinner"></div>
+          <div class="img-clipper">
+            <img class="profile-img" src="https://files.catbox.moe/ebui67.webp" alt="Reza Profile">
+          </div>
+        </div>
+
+        <div class="user-identity">
+          <h1 class="glitch-effect">REZA AL MOUSSAWI</h1>
+          <div class="typed-console">
+            <span id="typed-output"></span>
+          </div>
+        </div>
       </div>
-      <div class="profile_pic_content">
-       <img class="profile_pic" src="https://files.catbox.moe/ebui67.webp"/>
-       <div class="verified-badge">✓</div>
+
+      <div class="data-readout">
+        <div class="data-module">
+          <span class="module-label">LINK ID // المعرف</span>
+          <div class="module-value"><i class="fa-solid fa-circle-check verified-icon"></i> @p666z</div>
+        </div>
+        <div class="data-module">
+          <span class="module-label">NODES // المتابعون</span>
+          <div class="module-value">10.K+</div>
+        </div>
       </div>
-     </div>
-     <div class="card_content">
-      <div class="user">
-       <h4 class="gradient-text">𝑹𝑬𝒁𝑨 𝑨𝑳 𝑴𝒐𝒖𝒔𝒔𝒂𝒘𝒊- ࢪضـا المـوسوي</h4>
+
+      <a href="https://instagram.com/p666z" class="main-action-btn">
+        <i class="fa-brands fa-instagram"></i>
+        <span>تابعني / FOLLOW</span>
+      </a>
+
+      <div class="social-matrix">
+        <a href="https://t.me/lJJ2l" class="matrix-link" title="Personal Telegram"><i class="fa-brands fa-telegram"></i></a>
+        <a href="https://t.me/i_1_L_1L" class="matrix-link" title="Telegram Channel"><i class="fa-solid fa-tower-broadcast"></i></a>
+        <a href="https://instagram.com/p666z" class="matrix-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@MS4wLjABAAAALT3ljQqOXh9cfTq3cV9NTGuM2N7LGK0Dmmt2HBsG1YEBTOceP8y1oHt_io0-Pq9f?_r=1&_t=ZS-939ClJ9ijif" class="matrix-link" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
       </div>
-      <div class="name">
-       <h5 class="typed_text gradient-text"><i>مرحباً بكم في صفحتي الشخصية</i></h5>
+
+      <div class="system-footer">
+        SYSTEM OS: <span class="sys-id">NEON_GENESIS_2077</span> | DEV: @p666z
       </div>
-      <div class="social">
-       <a href="https://instagram.com/p666z">
-        <i aria-hidden="true" class="fa fa-instagram"></i>
-       </a>
-      </div>
-      <div class="action-btns">
-       <a class="action-btn main-btn" href="https://instagram.com/p666z">
-        <i class="fa fa-user-plus"></i>
-        تابعني
-       </a>
-      </div>
-      <div class="stats">
-       <span><i class="fa fa-at" style="color: #1E90FF;"></i> @p666z <span class="verified-small">✓</span></span>
-       <span><i class="fa fa-users" style="color: #FF69B4;"></i> 10.1ألف متابع</span>
-      </div>
-     </div>
-     <div class="footer">
-      الموقع مطور من قبل: @p666z
-     </div>
+
     </div>
   </div>
-  <style>
-   :root {
-    --back_color: #000000;
-    --front_color: #111111;
-    --color1: #FFD700; /* أصفر */
-    --color2: #FF69B4; /* وردي */
-    --color3: #1E90FF; /* أزرق */
-    --color4: #FF4500; /* أحمر */
-}
 
-.gradient-text {
-  background: linear-gradient(to right, var(--color1), var(--color2), var(--color4));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-* {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').style.opacity = '0';
+        setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 500);
+      }, 2000);
+    });
 
-body {
-    background: var(--back_color);
-    width: 100vw;
-    height: 100vh;
-    overflow: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
+    var typed = new Typed('#typed-output', {
+      strings: [
+        'مرحباً بكم في صفحتي الشخصية',
+        'Welcome to my personal page',
+        'موقعي الشخصي: رضا الموسوي',
+        'Contact Me: @p666z',
+        'SYSTEM STATUS: ONLINE'
+      ],
+      typeSpeed: 40,
+      backSpeed: 20,
+      startDelay: 2200,
+      loop: true,
+      cursorChar: '_'
+    });
 
-.container {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    // إعدادات Tilt مع دعم الجيروسكوب للهواتف
+    VanillaTilt.init(document.querySelector(".cyber-card"), {
+      max: 8,
+      speed: 1000,
+      glare: true,
+      "max-glare": 0.2,
+      gyroscope: true, // تفعيل الميلان بحركة الهاتف
+      gyroscopeMinAngleX: -10,
+      gyroscopeMaxAngleX: 10,
+      gyroscopeMinAngleY: -10,
+      gyroscopeMaxAngleY: 10,
+    });
+  </script>
 
-/* التعديلات المطلوبة */
-.vcard {
-    width: 450px;
-    height: 730px; /* تغيير مهم */
-    background: var(--front_color);
-    border-radius: 8px;
-    box-shadow: 5px 0px 20px rgba(255, 255, 255, 0.1);
-    position: relative;
-    margin: 20px 0;
-}
-
-.header {
-    height: 240px; /* التغيير المطلوب */
-    position: relative;
-    overflow: hidden; /* التغيير المطلوب */
-}
-
-.wave_bg {
-    position: absolute; /* التغيير المطلوب */
-    top: 0; /* التغيير المطلوب */
-    left: 0; /* التغيير المطلوب */
-    width: 100%; /* التغيير المطلوب */
-    height: 100%; /* التغيير المطلوب */
-    overflow: hidden; /* التغيير المطلوب */
-    z-index: 0; /* التغيير المطلوب */
-}
-
-.wave-01 {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: linear-gradient(to top right, var(--color1), var(--color2));
-    border-radius: 50%;
-    top: -200%;
-    left: -20%;
-    animation: rotate 10s linear infinite;
-}
-.wave-02 {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: linear-gradient(to top right, var(--color3), var(--color4));
-    border-radius: 40%;
-    top: -205%;
-    left: -22%;
-    opacity: 0.5;
-    animation: rotate 15s linear infinite;
-}
-.wave-03 {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: linear-gradient(to top right, var(--color2), var(--color3));
-    border-radius: 45%;
-    top: -198%;
-    left: -18%;
-    opacity: 0.2;
-    animation: rotate 15s linear infinite;
-}
-
-@keyframes rotate {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.profile_pic_content {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    top: 68%;
-    text-align: center;
-    z-index: 1; /* التغيير المطلوب */
-}
-.profile_pic_content::after {
-    content: '';
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, var(--color1), var(--color4));
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 0;
-    transition: all .7s;
-}
-.profile_pic_content:hover::after {
-    opacity: 0.3;
-}
-
-.profile_pic {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 100%;
-    border: 3px solid white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
-}
-
-.verified-badge {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: #1E90FF;
-    color: white;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    border: 2px solid white;
-}
-
-.card_content {
-    position: relative;
-    top: 7%;
-    text-align: center;
-    padding-bottom: 40px;
-}
-
-.user {
-    color: white;
-    font-weight: 700;
-    font-size: 1.4em;
-    margin-top: 30px;
-    text-shadow: 0 0 8px rgba(255,255,255,0.4);
-}
-.name {
-    margin-top: 15px;
-    color: #ccc;
-    padding: 0px 20px;
-    min-height: 80px;
-}
-
-.typed_text {
-  text-align: center;
-}
-
-.social {
-    color: #FF69B4;
-    padding: 5px;
-    margin-top: 30px;
-}
-.social a {
-    text-decoration: none;
-    color: #FF69B4;
-    font-size: 28px;
-    transition: all 0.3s;
-}
-.social a:hover {
-    color: #1E90FF;
-    transform: scale(1.2);
-}
-.social i {
-    padding: 5px;
-}
-
-.action-btns {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 25px;
-}
-.action-btn {
-    cursor: pointer;
-    display: block;
-    text-decoration: none;
-    width: 50%;
-    padding: 12px 20px;
-    border-radius: 25px;
-    color: white;
-    font-weight: bolder;
-    transition: all .5s;
-    border: none;
-    font-size: 16px;
-}
-.main-btn {
-    background: linear-gradient(to right, var(--color2), var(--color4));
-    box-shadow: 0 4px 15px rgba(255,105,180,0.3);
-}
-.action-btn:hover {
-    box-shadow: 0px 7px 20px rgba(255,105,180,0.5);
-    transform: translateY(-3px);
-}
-
-.stats {
-    margin-top: 30px;
-    color: #aaa;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.stats span {
-    display: inline-block;
-    margin: 0 5px;
-}
-.verified-small {
-    color: #1E90FF;
-    font-weight: bold;
-}
-
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    color: #777;
-    font-size: 12px;
-    border-top: 1px solid #333;
-}
-
-/* تأثير التمرير الناعم */
-html {
-    scroll-behavior: smooth;
-}
-  </style>
-<script>
-  var options = {
-    strings: [
-      "<i>الموقع الشخصي</i>", 
-      "-موقعي الشخصي: ࢪضا- 𝑹𝑬𝑫𝑨<br>يوزري: @p666z<br>المتابعون: 10.1ألف"
-    ],
-    typeSpeed: 9,
-    backSpeed: 20,
-    loop: true,
-    showCursor: true
-  }
-
-  var typed = new Typed(".typed_text", options);
-
-  // ✅ نضيف كلاس التدرج هنا
-  typed.el.classList.add("gradient-text");
-
-  // جعل الصفحة قابلة للتمرير
-  document.body.style.overflow = 'auto';
-  document.body.style.height = 'auto';
-</script>
 </body>
 </html>
