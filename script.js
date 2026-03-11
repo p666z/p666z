@@ -68,10 +68,7 @@ function initTypedText() {
 // تسجيل الزيارة
 async function recordVisit() {
   try {
-    const response = await fetch(`${GAS_URL}?action=visit`, {
-      method: 'GET',
-      mode: 'no-cors'
-    });
+    await fetch(`${GAS_URL}?action=visit`);
     console.log('Visit recorded');
   } catch (error) {
     console.error('Error recording visit:', error);
@@ -82,10 +79,7 @@ async function recordVisit() {
 async function loadStats() {
   try {
     // تحميل عدد الزوار
-    const visitorsResponse = await fetch(`${GAS_URL}?action=getVisitors`, {
-      method: 'GET',
-      mode: 'cors'
-    });
+    const visitorsResponse = await fetch(`${GAS_URL}?action=getVisitors`);
     const visitorsData = await visitorsResponse.json();
     
     if (visitorsData.success) {
@@ -93,10 +87,7 @@ async function loadStats() {
     }
     
     // تحميل عدد الإعجابات
-    const likesResponse = await fetch(`${GAS_URL}?action=getLikes`, {
-      method: 'GET',
-      mode: 'cors'
-    });
+    const likesResponse = await fetch(`${GAS_URL}?action=getLikes`);
     const likesData = await likesResponse.json();
     
     if (likesData.success) {
@@ -122,10 +113,7 @@ async function handleLike() {
   }
   
   try {
-    const response = await fetch(`${GAS_URL}?action=like`, {
-      method: 'GET',
-      mode: 'no-cors'
-    });
+    await fetch(`${GAS_URL}?action=like`);
     
     // تحديث الواجهة
     likeBtn.classList.add('liked');

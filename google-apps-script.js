@@ -22,14 +22,9 @@ const SHEET_NAME = 'Analytics';
 // الرئيسية - معالجة الطلبات
 function doGet(e) {
   const action = e.parameter.action;
-  
-  // السماح بالوصول من أي مصدر (CORS)
-  const output = ContentService.createTextOutput();
-  output.setMimeType(ContentService.MimeType.JSON);
+  let result = { success: false, error: 'Invalid action' };
   
   try {
-    let result;
-    
     switch(action) {
       case 'visit':
         result = recordVisit();
@@ -43,19 +38,21 @@ function doGet(e) {
       case 'getLikes':
         result = getLikeCount();
         break;
-      default:
-        result = { success: false, error: 'Invalid action' };
     }
-    
-    output.setContent(JSON.stringify(result));
-    
   } catch (error) {
-    output.setContent(JSON.stringify({
-      success: false,
-      error: error.toString()
-    }));
+    result = { success: false, error: error.toString() };
   }
   
+  // إرجاع النتيجة مع CORS headers
+  const output = ContentService.createTextOutput(JSON.stringify(result));
+  output.setMimeType(ContentService.MimeType.JSON);
+  return output;
+}
+
+// معالجة طلبات OPTIONS (لـ CORS)
+function doOptions() {
+  const output = ContentService.createTextOutput('');
+  output.setMimeType(ContentService.MimeType.JSON);
   return output;
 }
 
