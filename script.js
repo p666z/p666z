@@ -3,7 +3,7 @@
 // =========================================
 
 // رابط Google Apps Script - تم التحديث
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbyBBxt5W9Ptb9eVkdGlnoepB1MBK6TNutzGvNVHT0Vh4-3n5ddyWl40SzWSAUdfItw4/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwxFOHaJRGbc0kR6jlQqYTWLY0tWJyG2j2u1yFPR-trcz17ndnDbdN6yszn7l8iGfU/exec';
 
 // عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', () => {
