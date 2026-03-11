@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#6366f1">
+  <meta name="description" content="رضا الموسوي - صفحة شخصية">
+  
+  <title>رضا الموسوي | @p666z</title>
+  
+  <!-- خطوط -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- أيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- ملف التنسيق -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <!-- خلفية متحركة -->
+  <div class="bg-animation"></div>
+  
+  <!-- عداد الزوار -->
+  <div class="visitor-counter">
+    <i class="fa-solid fa-eye"></i>
+    <span id="visitor-count">---</span>
+    <span>زائر</span>
+  </div>
+  
+  <!-- البطاقة الرئيسية -->
+  <div class="card">
+    
+    <!-- الصورة الشخصية -->
+    <div class="profile-wrapper">
+      <div class="profile-ring"></div>
+      <img class="profile-img" src="https://files.catbox.moe/ebui67.webp" alt="رضا الموسوي">
+    </div>
+    
+    <!-- الهوية -->
+    <div class="identity">
+      <h1>رضا الموسوي</h1>
+      <p class="subtitle">@p666z</p>
+    </div>
+    
+    <!-- نص متحرك -->
+    <div class="typed-text" id="typed-output"></div>
+    
+    <!-- الإحصائيات -->
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-label">المعرف</div>
+        <div class="stat-value">
+          <i class="fa-solid fa-circle-check" style="color: #6366f1;"></i>
+          @p666z
+        </div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">المتابعون</div>
+        <div class="stat-value">10K+</div>
+      </div>
+    </div>
+    
+    <!-- زر الإعجاب -->
+    <div class="like-section">
+      <button class="like-btn" id="like-btn" onclick="handleLike()" title="أعجبني!">
+        <i class="fa-solid fa-heart"></i>
+      </button>
+      <div class="like-count">
+        <span id="likes-count">---</span> إعجاب
+      </div>
+    </div>
+    
+    <!-- زر المتابعة -->
+    <a href="https://instagram.com/p666z" class="btn-primary" target="_blank">
+      <i class="fa-brands fa-instagram"></i>
+      <span>تابعني على إنستغرام</span>
+    </a>
+    
+    <!-- روابط التواصل -->
+    <div class="social-links">
+      <a href="https://t.me/lJJ2l" class="social-link" title="تلغرام الشخصي" target="_blank">
+        <i class="fa-brands fa-telegram"></i>
+      </a>
+      <a href="https://t.me/z88zy/2" class="social-link" title="قناة التلغرام" target="_blank">
+        <i class="fa-solid fa-tower-broadcast"></i>
+      </a>
+      <a href="https://instagram.com/p666z" class="social-link" title="إنستغرام" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://vt.tiktok.com/ZSaJ7Meco/" class="social-link" title="تيك توك" target="_blank">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+    </div>
+    
+    <!-- التذييل -->
+    <div class="footer">
+      <p>© 2025 رضا الموسوي | تم التطوير بحب ❤️</p>
+    </div>
+    
+  </div>
+  
+  <!-- رسائل التنبيه -->
+  <div class="toast" id="toast"></div>
+  
+  <!-- ملف الجافاسكربت -->
+  <script src="script.js"></script>
+  
+</body>
+</html>
